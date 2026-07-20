@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
-import './components/Test.jsx'
+import './components/List.jsx'
 import './App.css'
 import { useState } from 'react';
-import { Test } from './components/Test.jsx';
+import { List } from './components/List.jsx';
+import { DemonInfo } from './components/DemonInfo.jsx';
+import { Header } from './components/Header.jsx';
 
 function App() {
-
-
   const [data, setData] = useState([])
+  const [activeDemonId, setActiveDemonId] = useState(1)
 
   useEffect(() => {
     const SPREADSHEET_ID = '1Fg5vYYC24SyM27H4N7tFdD82wESDu3FuvU57mGNK7EI';
@@ -18,14 +19,19 @@ function App() {
 
     fetch(url)
       .then(res => res.json())
-      .then(data => setData(data.values))
+      .then((data) => {setData(data.values); console.log(data)})
       .catch(err => console.error(err));
   }, []);
 
+  
+
   return (
     <>
-      
-      <Test data={data} />
+      <Header />
+      <div className='main'>
+        <List data={data} setActiveDemonId={setActiveDemonId} setData={setData} />
+        <DemonInfo data={data} demon={activeDemonId} />
+      </div>
     </>
   )
 }

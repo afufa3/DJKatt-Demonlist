@@ -1,0 +1,67 @@
+.demon-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 380px;
+  max-width: 380px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-right: 15px;
+}
+
+.demon-list {
+  min-width: 350px;
+  max-height: 500px;
+  overflow-y: auto;
+  list-style-type: none;
+  padding: 0;
+  padding-right: 5px;
+}
+
+.demon-list::-webkit-scrollbar {
+  background-color: #000020;
+  width: 7px;
+}
+
+.demon-list::-webkit-scrollbar-thumb {
+  background-color: #0A0A3A;
+  border-radius: 10px;
+}
+
+/* #0A0A3A */
+.demon-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0A0A3A;
+  height: 42px;
+  min-width: 350px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-size: 19px;
+}
+
+.demon-item:hover {
+  background-color: #0A0A4F;
+}
+
+.demon-search {
+  width: 300px;
+  height: 35px;
+  padding-left: 20px;
+  color: white;
+  
+  border: none;
+  border-radius: 7px;
+  background-color: #0A0A3A;
+}
+
+.demon-search::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.demon-search:focus {
+  outline: none;
+}
