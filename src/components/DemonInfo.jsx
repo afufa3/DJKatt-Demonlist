@@ -6,12 +6,12 @@ import InsaneDemon from '../assets/INSANE DEMON.png'
 import ExtremeDemon from '../assets/EXTREME DEMON.png'
 
 export function DemonInfo({ data, demon }) {
-  const checkForData = (index) => {
-    return data[demon][index] === "" ? "No data" : data[demon][index]
+  const checkForData = (demonInfo) => {
+    return demonInfo === "" ? "No data" : demonInfo
   }
 
   const checkDifficulty = () => {
-    switch (data[demon][1]) {
+    switch (data[demon].difficulty) {
       case "Extreme":
         return ExtremeDemon
       case "Insane":
@@ -28,7 +28,7 @@ export function DemonInfo({ data, demon }) {
   }
 
   const parseVideoId = () => {
-    const url = data[demon][8]
+    const url = data[demon].videoUrl
     let result = ""
 
     for (let i = url.length; i > 0; i--) {
@@ -58,27 +58,27 @@ export function DemonInfo({ data, demon }) {
             </div>
             <div className='text-info'>
               <div className='title'>
-                <h2>{checkForData(3)}</h2>
-                <p>by {checkForData(4)}</p>
+                <h2>{checkForData(data[demon].name)}</h2>
+                <p>by {checkForData(data[demon].creator)}</p>
               </div>
               <div className='difficulty'>
                 <img className='diff-img' src={checkDifficulty()} />
-                <p>{checkForData(1)}<br></br> Demon</p>
+                <p>{checkForData(data[demon].difficulty)}<br></br> Demon</p>
               </div>
             </div>
           </div>
           <div className='lower-half'>
             <div className='enjoyment'>
               <h3>Attempts</h3>
-              <p>{checkForData(7)}</p>
+              <p>{checkForData(data[demon].attempts)}</p>
             </div>
             <div className='date'>
               <h3>Date</h3>
-              <p>{checkForData(6)}</p>
+              <p>{checkForData(data[demon].date)}</p>
             </div>
             <div className='attempts'>
               <h3>Enjoyment</h3>
-              <p>{checkForData(5)}</p>
+              <p>{checkForData(data[demon].enjoyment)}</p>
             </div>
           </div>
         </div>

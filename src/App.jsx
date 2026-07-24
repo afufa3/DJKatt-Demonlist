@@ -8,7 +8,7 @@ import { Header } from './components/Header.jsx';
 
 function App() {
   const [data, setData] = useState([])
-  const [activeDemonId, setActiveDemonId] = useState(1)
+  const [activeDemonId, setActiveDemonId] = useState(0)
 
   useEffect(() => {
     const SPREADSHEET_ID = '1Fg5vYYC24SyM27H4N7tFdD82wESDu3FuvU57mGNK7EI';
@@ -19,11 +19,25 @@ function App() {
 
     fetch(url)
       .then(res => res.json())
-      .then((data) => {setData(data.values); console.log(data)})
+      .then((data) => {
+        const demons = data.values
+          .filter(row => row[3] !== 'Level')
+          .map(row => ({
+            id: row[0],
+            difficulty: row[1],
+            name: row[3],
+            creator: row[4],
+            enjoyment: row[5],
+            date: row[6],
+            attempts: row[7],
+            videoUrl: row[8],
+          }));
+        setData(demons);
+      })
       .catch(err => console.error(err));
   }, []);
 
-  
+
 
   return (
     <>
